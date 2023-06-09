@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Image Loading Example</title>
+  </head>
+  <body>
+    <img id = "myImage" src = "Wallpaper2.jpg" alt ="My Image "/>
+    <script>
+      const loadImage = new Promise((resolve, reject) => {
+        const image = document.getElementById('myImage')
+
+        image.onload = () => {
+          resolve(image); // Resolve the promise with the loaded image
+        };
+
+        image.onerror = () => {
+          reject('Failed to load image'); // Reject the promise with an error message
+        };
+      });
+
+      loadImage
+        .then((image) => {
+          // Do something with the loaded image
+         console.log('Image loaded');
+        })
+        .catch((error) => {
+          // Handle the error if the image failed to load
+          console.error('Image loading failed:', error);
+        });
+    </script>
+  </body>
+</html>

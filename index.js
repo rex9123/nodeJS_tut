@@ -1,19 +1,24 @@
-const fs = require('fs')
-const path = require('path')
-const dirPath = path.join(__dirname,'files')
-const filepath = `${dirPath}/apple.txt`
-    
-/*fs.writeFileSync(filepath,'This is a simple text file')
-fs.readFile(filepath , (err,item) => {
-    console.log(item)
-})
-
-fs.appendFile(filepath,' and file name is apple.txt',(err)=> {
-    if(!err) console.log('File is updated')
-})
-
-fs.rename(filepath,`${dirPath}/fruit.txt`,(err) => {
-        if(!err) console.log("file name is updated")
-})
-*/
-fs.unlinkSync(`${dirPath}/fruit.txt`)
+// imageLoad.js
+const loadImage = new Promise((resolve, reject) => {
+    const image = new Image();
+    image.src = 'C:/Users/maria/OneDrive/Pictures/Screenshots/Screenshot 2023-05-27 212557.png';
+  
+    image.onload = () => {
+      resolve(image); // Resolve the promise with the loaded image
+    };
+  
+    image.onerror = () => {
+      reject('Failed to load image'); // Reject the promise with an error message
+    };
+  });
+  
+  loadImage
+    .then((image) => {
+      // Do something with the loaded image
+      console.log('Image loaded:', image);
+    })
+    .catch((error) => {
+      // Handle the error if the image failed to load
+      console.error('Image loading failed:', error);
+    });
+  
