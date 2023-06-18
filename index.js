@@ -1,14 +1,20 @@
 const express = require('express')
 const app = express();
+const path = require('path')
 
-app.get('',(req,res) => {
-    res.send(`<input type = "text" placeholder = "User name" value= " ${req.query.name}" />
-    <button>Click</button>
-    <a href = "/help" >Go to help page</a>`)
+const publicPath = path.join(__dirname,'public')
+
+app.get('/index',(_,res) =>{
+    res.sendFile(`${publicPath}/index.html`)
 })
 
-app.get('/help',(req,res) => {
-  res.send(`<h1>Any help</h1>`)
+app.get('/help',(_,res) =>{
+    res.sendFile(`${publicPath}/help.html`)
 })
+
+app.get('*',(_,res) =>{
+    res.sendFile(`${publicPath}/nopage.html`)
+})
+
 
 app.listen(5500)
