@@ -19,10 +19,14 @@ app.get('/profile',(_,res) =>{
     const user = {
         name: 'Rex',
         email : 'rex@123test.com',
-        city : 'Mumbai'
+        city : 'Mumbai',
+        skills : ['C','C++','Java','JS','Python']
     }
-    //res.json(user);
     res.render('profile',{user})
+})
+
+app.get('/login' ,(_,res) => {
+    res.render('login')
 })
 
 app.get('*',(_,res) =>{
