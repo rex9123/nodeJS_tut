@@ -4,12 +4,24 @@ const path = require('path')
 
 const publicPath = path.join(__dirname,'public')
 
-app.get('/index',(_,res) =>{
-    res.sendFile(`${publicPath}/index.html`)
+app.set('view engine' , 'ejs')
+
+app.get('',(_,res) =>{
+    res.sendFile(`${publicPath}/index.html`) 
 })
 
 app.get('/help',(_,res) =>{
     res.sendFile(`${publicPath}/help.html`)
+})
+
+app.get('/profile',(_,res) =>{
+
+    const user = {
+        name: 'Rex',
+        email : 'rex@123test.com',
+        city : 'Mumbai'
+    }
+    res.render('profile',{user})
 })
 
 app.get('*',(_,res) =>{
