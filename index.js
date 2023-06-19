@@ -21,6 +21,7 @@ app.get('/profile',(_,res) =>{
         email : 'rex@123test.com',
         city : 'Mumbai'
     }
+    //res.json(user);
     res.render('profile',{user})
 })
 
@@ -29,4 +30,6 @@ app.get('*',(_,res) =>{
 })
 
 
-app.listen(5500)
+app.listen(5500, () => {
+    console.log('Server is running on port 5500');
+  });
