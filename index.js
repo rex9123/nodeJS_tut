@@ -1,39 +1,12 @@
 const express = require('express')
-const app = express();
-const path = require('path')
+const app = express()
 
-const publicPath = path.join(__dirname,'public')
-
-app.set('view engine' , 'ejs')
-
-app.get('',(_,res) =>{
-    res.sendFile(`${publicPath}/index.html`) 
+app.get('/',(req,res) => {
+    res.send('<h1>Welcome to Home page</h1>')
 })
 
-app.get('/help',(_,res) =>{
-    res.sendFile(`${publicPath}/help.html`)
+app.get('/users',(req,res) => {
+    res.send('<h1>Welcome to Users page </h1>')
 })
 
-app.get('/profile',(_,res) =>{
-
-    const user = {
-        name: 'Rex',
-        email : 'rex@123test.com',
-        city : 'Mumbai',
-        skills : ['C','C++','Java','JS','Python']
-    }
-    res.render('profile',{user})
-})
-
-app.get('/login' ,(_,res) => {
-    res.render('login')
-})
-
-app.get('*',(_,res) =>{
-    res.sendFile(`${publicPath}/nopage.html`)
-})
-
-
-app.listen(5500, () => {
-    console.log('Server is running on port 5500');
-  });
+app.listen(5500)
