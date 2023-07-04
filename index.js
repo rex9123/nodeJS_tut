@@ -1,10 +1,14 @@
-const express = require('express')
-const app = express()
+const {MongoClient} = require('mongodb');
+const url = 'mongodb://0.0.0.0:27017';
+const database = 'ecomm'
+const client = new MongoClient(url);
 
-const route = express.Router()
-
-app.get('',(req,res)=> {
-    res.send('<h1>Welcome to home page</h1>')
-})
-app.listen(5500)
-console.log("Server running on port 5500")
+async function getData()
+{
+    let result = await client.connect();
+    let db = result.db(database)
+    let collection = db.collection('products')
+    let response = await collection.find({}).toArray()
+    console.log(response)
+}
+getData()
