@@ -1,13 +1,12 @@
 const dbConnection = require('./mongodb')
-/*dbConnection().then((res) => {
-  res.find().toArray().then(()=> {
-    console.warn(data)
-  })
-})*/
 
-const main = async () =>{
+//dbConnection.then((res) =>{
+  //console.warn(res.find().toArray())
+//})
+//console.warn(dbConnection())
+const main = async () => {
   let data = await dbConnection()
-  data= await data.find().toArray()
+  data = await data.find().toArray()
   console.warn(data)
 
 }

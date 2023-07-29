@@ -1,10 +1,11 @@
-const dbConnect = require('./mongodb')
+const dbConnection = require('./mongodb')
 
-const insert = async () =>{
-    const db = await dbConnect()
-    const result = db.insert(
-        {name : 'note 5' , brand : 'vivo' , price : 320 , category : 'mobile'}
-        )
-    console.log(result)
-    }    
+const insert = async() =>{
+    const db = await dbConnection()
+    const result = db.insertOne({
+        name:'Vivo V15 Pro',
+        brand: 'Vivo',
+        price : 18000
+    })
+}
 insert()
